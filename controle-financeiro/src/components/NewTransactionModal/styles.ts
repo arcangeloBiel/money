@@ -47,21 +47,36 @@ button[type="submit"] {
 `;
 
 export const TransactionTypeContainer = styled.div`
-margin-top: 1rem;
-margin-bottom: 1rem;
+margin: 1rem 0;
 display: grid;
 grid-template-columns: 1fr 1fr;
 gap: 0.5rem;
 
-button {
-    height: 4rem;
+`;
+
+interface RadioBoxProps {
+    isActive: boolean;
+    isactiveColor: 'green' | 'red';
+}
+
+const colors = {
+red: '#e52e4d',
+green: '#33CC95'
+}
+
+export const RadioBox = styled.button<RadioBoxProps>`
+ height: 4rem;
     border: 1px solid #d7d7d7;
     border-radius: 0.25rem;
-    background: transparent;
+
+    background: ${(props) => props.isActive 
+    ? colors[props.isactiveColor]
+    : 'transparent'};
+
     display: flex;
     align-items: center;
     justify-content: center;
-}
+
 &:hover {
     border-color: #aaa;
 }
